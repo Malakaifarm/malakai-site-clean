@@ -1,102 +1,522 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Malakai Farm</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f3ec;
+      color: #1c1917;
+      line-height: 1.5;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247,243,236,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e7e5e4;
+    }
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      flex-wrap: wrap;
+    }
+    .brand-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+    }
+    .brand-sub {
+      margin-top: 4px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #78716c;
+    }
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: #44403c;
+    }
+    .nav a:hover {
+      background: #fff;
+    }
+
+    .hero {
+      border-bottom: 1px solid #e7e5e4;
+      padding: 64px 0 56px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      color: #78716c;
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 64px;
+      line-height: 1.02;
+      font-weight: 700;
+    }
+    .hero-text {
+      margin-top: 24px;
+      font-size: 20px;
+      line-height: 1.7;
+      color: #57534e;
+      max-width: 760px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .btn-dark {
+      background: #1c1917;
+      color: #fff;
+      border: 1px solid #1c1917;
+    }
+    .btn-light {
+      background: #fff;
+      color: #1c1917;
+      border: 1px solid #d6d3d1;
+    }
+
+    .hero-panel {
+      display: grid;
+      gap: 16px;
+    }
+    .hero-image-card {
+      background: #fff;
+      border-radius: 34px;
+      padding: 14px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .hero-image {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      border-radius: 26px;
+    }
+    .hero-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .mini-card {
+      border-radius: 28px;
+      padding: 26px;
+    }
+    .mini-card.light {
+      background: #e8dfd0;
+      color: #1c1917;
+    }
+    .mini-card.dark {
+      background: #1c1917;
+      color: #fff;
+    }
+    .mini-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #78716c;
+    }
+    .mini-card.dark .mini-label {
+      color: #cfc8be;
+    }
+    .mini-text {
+      margin-top: 12px;
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .feature-block {
+      background: #1c1917;
+      color: #fff;
+      border-radius: 36px;
+      padding: 40px;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .feature-sub {
+      color: #a8a29e;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      margin-bottom: 12px;
+    }
+    .feature-title {
+      margin: 0;
+      font-size: 46px;
+      line-height: 1.06;
+    }
+    .feature-text {
+      margin-top: 18px;
+      color: #d6d3d1;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+    .pill-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .pill {
+      background: rgba(255,255,255,0.08);
+      padding: 14px 16px;
+      border-radius: 18px;
+      font-size: 14px;
+    }
+    .feature-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .feature-images {
+      display: grid;
+      gap: 12px;
+    }
+    .feature-images img {
+      width: 100%;
+      height: 165px;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .program-card {
+      background: #fff;
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    }
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: #78716c;
+    }
+    .section-title {
+      margin: 14px 0 0;
+      font-size: 40px;
+      line-height: 1.08;
+    }
+    .section-text {
+      margin-top: 18px;
+      color: #57534e;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+    .feature-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .feature-item {
+      border: 1px solid #e7e5e4;
+      background: #fff;
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #44403c;
+    }
+
+    .sale-section {
+      background: #fff;
+      border-top: 1px solid #ece7df;
+      border-bottom: 1px solid #ece7df;
+    }
+    .sale-card {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #f9f6f0;
+      border: 1px solid #ece7df;
+      border-radius: 28px;
+      padding: 34px;
+      text-align: center;
+    }
+
+    .contact-wrap {
+      background: #1c1917;
+      color: #fff;
+      border-radius: 36px;
+      padding: 40px;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .contact-title {
+      margin: 10px 0 0;
+      font-size: 44px;
+      line-height: 1.08;
+    }
+    .contact-text {
+      margin-top: 18px;
+      color: #d6d3d1;
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 720px;
+    }
+    .contact-box {
+      background: rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      color: #ece7df;
+    }
+
+    footer {
+      border-top: 1px solid #e7e5e4;
+      background: rgba(255,255,255,0.6);
+      padding: 24px 0;
+      color: #78716c;
+      font-size: 14px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .feature-grid,
+      .two-col,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-mini-grid,
+      .pill-grid,
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+      h1 { font-size: 44px; }
+      .hero-image { height: 320px; }
+      .feature-title,
+      .contact-title,
+      .section-title { font-size: 32px; }
+    }
+  </style>
 </head>
+<body>
 
-<body style="margin:0;font-family:Arial, sans-serif;color:#333;">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div>
+        <div class="brand-title">MALAKAI</div>
+        <div class="brand-sub">Valais Blacknose Sheep & Mediterranean Miniature Donkeys</div>
+      </div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#donkeys">Donkeys</a>
+        <a href="#sheep">Sheep</a>
+        <a href="#sale">For Sale</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<!-- NAV -->
-<div style="padding:20px 40px;background:white;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;">
-  <div style="font-weight:bold;font-size:20px;">Malakai Farm</div>
-  <div>
-    <a href="#donkeys" style="margin-right:20px;text-decoration:none;color:#333;">Donkeys</a>
-    <a href="#sheep" style="margin-right:20px;text-decoration:none;color:#333;">Sheep</a>
-    <a href="#sale" style="text-decoration:none;color:#333;">For Sale</a>
-  </div>
-</div>
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Miners Rest, Victoria</div>
+          <h1>Traditional Valais Blacknose sheep and one of Australia’s leading Mediterranean Miniature Donkey studs.</h1>
+          <div class="hero-text">
+            Malakai is a premium breeding program focused on conformation, true traditional type, quality bloodlines, and beautifully presented livestock bred with purpose.
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#sheep">View Our Sheep</a>
+            <a class="btn btn-light" href="#donkeys">View Our Donkeys</a>
+          </div>
+        </div>
 
-<!-- HERO -->
-<div style="
-  background:url('/public/group-babies.webp') center/cover;
-  height:600px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-">
-  <div style="background:rgba(0,0,0,0.5);padding:40px;">
-    <h1 style="font-size:50px;margin:0;">Malakai Farm</h1>
-    <p style="font-size:20px;margin-top:10px;">
-      Elite Valais Blacknose Sheep & Miniature Donkeys
-    </p>
-  </div>
-</div>
+        <div class="hero-panel">
+          <div class="hero-image-card">
+            <img class="hero-image" src="/public/group-babies.webp" alt="Valais lambs at Malakai Farm">
+          </div>
 
-<!-- ABOUT -->
-<div style="padding:80px 40px;max-width:1100px;margin:auto;text-align:center;">
-  <h2>Breeding Excellence</h2>
-  <p style="max-width:700px;margin:auto;">
-    Located in Miners Rest, Victoria, Malakai Farm is focused on breeding true traditional
-    Valais Blacknose Sheep and one of Australia’s largest Mediterranean Miniature Donkey studs.
-    Our program is built on elite genetics, correct conformation, and consistency.
-  </p>
-</div>
+          <div class="hero-mini-grid">
+            <div class="mini-card light">
+              <div class="mini-label">Valais Focus</div>
+              <div class="mini-text">Conformation, bone, fleece, markings, and true traditional type.</div>
+            </div>
+            <div class="mini-card dark">
+              <div class="mini-label">Donkey Stud</div>
+              <div class="mini-text">Imported genetics, strong type, and one of Australia’s largest studs.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- DONKEYS -->
-<div id="donkeys" style="display:flex;flex-wrap:wrap;align-items:center;">
-  <div style="flex:1;min-width:300px;">
-    <img src="/public/donkey-trio-1.jpg" style="width:100%;">
-  </div>
-  <div style="flex:1;padding:60px;">
-    <h2>Stud Donkeys</h2>
-    <p>
-      Premium imported bloodlines with proven performance.
-      Our donkeys are bred for size, temperament, and consistency.
-    </p>
-    <a href="#" style="display:inline-block;margin-top:20px;text-decoration:none;border:1px solid #333;padding:10px 20px;">
-      View Stud Donkeys
-    </a>
-  </div>
-</div>
+    <section class="container">
+      <div class="feature-block">
+        <div class="feature-grid">
+          <div>
+            <div class="feature-sub">Featured Opportunity</div>
+            <h2 class="feature-title">Elite Donkey Breeding Package</h2>
+            <div class="feature-text">
+              Two pregnant jennies, both in foal to Micro Mini Heikens Arc Clint Mar, plus one unrelated micro red jack. A rare package built from elite, hand-selected bloodlines with a strong focus on size, quality, and consistency.
+            </div>
 
-<!-- SHEEP -->
-<div id="sheep" style="display:flex;flex-wrap:wrap;align-items:center;">
-  <div style="flex:1;padding:60px;">
-    <h2>Valais Blacknose Sheep</h2>
-    <p>
-      Traditional style Valais breeding program focused on conformation,
-      structure, and breed integrity.
-    </p>
-    <a href="#" style="display:inline-block;margin-top:20px;text-decoration:none;border:1px solid #333;padding:10px 20px;">
-      View Sheep
-    </a>
-  </div>
-  <div style="flex:1;min-width:300px;">
-    <img src="/public/group-babies.webp" style="width:100%;">
-  </div>
-</div>
+            <div class="pill-grid">
+              <div class="pill">Two pregnant jennies</div>
+              <div class="pill">Both in foal to Micro Mini Heikens Arc Clint Mar</div>
+              <div class="pill">One unrelated micro red jack</div>
+              <div class="pill">Stud priced • Serious enquiries only</div>
+            </div>
 
-<!-- FOR SALE -->
-<div id="sale" style="padding:80px 40px;text-align:center;background:#f5f5f5;">
-  <h2>Livestock For Sale</h2>
-  <p>Exclusive breeding opportunities available at select times.</p>
+            <div class="feature-actions">
+              <a class="btn btn-light" href="#sale">View Package</a>
+              <a class="btn" href="#contact" style="border:1px solid rgba(255,255,255,0.35); color:#fff;">Enquire Now</a>
+            </div>
+          </div>
 
-  <div style="max-width:600px;margin:auto;background:white;padding:30px;border-radius:8px;">
-    <h3>Donkey Breeding Package</h3>
-    <p>
-      Two pregnant Jennys + one unrelated micro jack.<br>
-      Elite genetics. Serious enquiries only.
-    </p>
-  </div>
-</div>
+          <div class="feature-images">
+            <img src="/public/donkey-trio-1.jpg" alt="Breeding package donkey one">
+            <img src="/public/donkey-trio-2.jpg" alt="Breeding package donkey two">
+            <img src="/public/donkey-trio-3.jpg" alt="Breeding package donkey three">
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- FOOTER -->
-<div style="padding:40px;text-align:center;background:#2f3e2f;color:white;">
-  <p>Malakai Farm • Miners Rest, Victoria</p>
-</div>
+    <section id="about" class="container">
+      <div class="two-col">
+        <div class="program-card">
+          <div class="section-label">Valais Blacknose Sheep</div>
+          <h2 class="section-title">Bred for traditional style and stud quality.</h2>
+          <div class="section-text">
+            Our sheep program focuses on correct conformation, strong bone, balanced markings, dense fleece, and the traditional Valais character that gives the breed its premium appeal.
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item">True traditional Valais Blacknose style</div>
+            <div class="feature-item">Conformation-led breeding decisions</div>
+            <div class="feature-item">Focus on bone, markings, and fleece</div>
+            <div class="feature-item">Calm temperament and breeding value</div>
+          </div>
+        </div>
+
+        <div class="program-card" id="donkeys">
+          <div class="section-label">Mediterranean Miniature Donkeys</div>
+          <h2 class="section-title">A large Australian stud built on imported genetics.</h2>
+          <div class="section-text">
+            Our donkey program is centered on soundness, temperament, conformation, and long-term quality, with bloodlines chosen to strengthen the future of the stud.
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item">One of Australia’s largest studs</div>
+            <div class="feature-item">Quality imported genetics</div>
+            <div class="feature-item">Strong conformation and soundness</div>
+            <div class="feature-item">Temperament and long-term consistency</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sheep" class="sale-section">
+      <div class="container">
+        <div class="sale-card">
+          <div class="section-label">Livestock For Sale</div>
+          <h2 class="section-title">Exclusive breeding opportunities released selectively.</h2>
+          <div class="section-text">
+            We occasionally release premium stock and carefully curated breeding packages. These are not entry-level offerings — they are designed for serious breeders looking for genuine quality.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <div class="contact-wrap">
+        <div class="contact-grid">
+          <div>
+            <div class="section-label" style="color:#a8a29e;">Contact</div>
+            <h2 class="contact-title">Enquiries welcome for sheep, donkeys, and upcoming stock.</h2>
+            <div class="contact-text">
+              Get in touch to discuss available animals, future breeding prospects, or to learn more about the Malakai breeding program.
+            </div>
+          </div>
+
+          <div>
+            <div class="contact-box">17 Miners Rest Rd, Miners Rest VIC 3352</div>
+            <div class="contact-box">shane@malakai.com.au</div>
+            <div class="contact-box">0409 270 381</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>Malakai • 17 Miners Rest Rd, Miners Rest VIC 3352</div>
+      <div>Valais Blacknose Sheep • Mediterranean Miniature Donkeys</div>
+    </div>
+  </footer>
 
 </body>
 </html>
