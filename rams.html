@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stud Rams - Malakai</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f3ec;
+      color: #1c1917;
+      line-height: 1.5;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(247,243,236,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e7e5e4;
+    }
+    .topbar-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 20px; padding: 18px 0; flex-wrap: wrap;
+    }
+    .brand-title { font-size: 28px; font-weight: 700; letter-spacing: 0.18em; }
+    .brand-sub { margin-top: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #78716c; }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav a { padding: 10px 16px; border-radius: 999px; font-size: 14px; color: #44403c; }
+    .nav a:hover, .nav a.active { background: #fff; }
+
+    .hero {
+      border-bottom: 1px solid #e7e5e4;
+      padding: 72px 0 50px;
+    }
+    .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.34em; color: #78716c; margin-bottom: 16px; }
+    h1 { margin: 0; font-size: 56px; line-height: 1.04; font-weight: 700; max-width: 920px; }
+    .hero-text { margin-top: 22px; font-size: 19px; line-height: 1.8; color: #57534e; max-width: 820px; }
+    .hero-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+    .chip {
+      display: inline-block; padding: 12px 18px; border-radius: 999px; font-size: 14px;
+      border: 1px solid #d6d3d1; background: #fff; color: #1c1917;
+    }
+    .chip.dark { background: #1c1917; color: #fff; border-color: #1c1917; }
+
+    section { padding: 70px 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e7e5e4;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    }
+    .card img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+    }
+    .card-body { padding: 28px; }
+    .status {
+      display: inline-block; margin-bottom: 12px; background: #f5f5f4;
+      padding: 8px 12px; border-radius: 999px; font-size: 11px; text-transform: uppercase; color: #57534e;
+    }
+    h2 { margin: 0; font-size: 30px; line-height: 1.1; }
+    .meta { margin-top: 16px; color: #57534e; font-size: 16px; line-height: 1.8; }
+    .ped { margin-top: 14px; color: #78716c; font-size: 14px; line-height: 1.7; }
+
+    .contact-wrap {
+      background: #1c1917; color: #fff; border-radius: 36px; padding: 40px;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px; align-items: start;
+    }
+    .contact-title { margin: 10px 0 0; font-size: 40px; line-height: 1.08; }
+    .contact-text { margin-top: 18px; color: #d6d3d1; font-size: 18px; line-height: 1.8; max-width: 720px; }
+    .contact-box {
+      background: rgba(255,255,255,0.06); border-radius: 22px; padding: 18px 20px; margin-bottom: 14px; color: #ece7df;
+    }
+
+    footer {
+      border-top: 1px solid #e7e5e4; background: rgba(255,255,255,0.6); padding: 24px 0; color: #78716c; font-size: 14px;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .grid, .contact-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 40px; }
+      .contact-title { font-size: 32px; }
+      .card img { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div>
+        <div class="brand-title">MALAKAI</div>
+        <div class="brand-sub">Valais Blacknose Sheep & Mediterranean Miniature Donkeys</div>
+      </div>
+      <nav class="nav">
+        <a href="/index.html">Home</a>
+        <a href="/index.html#about">About</a>
+        <a href="/jacks.html">Donkeys</a>
+        <a href="/rams.html" class="active">Rams</a>
+        <a href="/ewes.html">Ewes</a>
+        <a href="/index.html#sale">For Sale</a>
+        <a href="/index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Stud Rams</div>
+      <h1>Rams selected to move the flock forward.</h1>
+      <div class="hero-text">
+        Our stud rams page is set up in the same premium format as the donkey pages. This gives you a clean structure to load your Valais sires as soon as you have final photos and profile details ready.
+      </div>
+      <div class="hero-links">
+        <a class="chip dark" href="/ewes.html">View Ewes</a>
+        <a class="chip" href="/index.html#contact">Enquire Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="grid">
+
+      <div class="card">
+        <img src="/public/group-babies.webp" alt="Stud Ram 01">
+        <div class="card-body">
+          <div class="status">Stud Ram</div>
+          <h2>Stud Ram 01</h2>
+          <div class="meta">
+            Replace with your lead sire details, breeding notes, and standout traits.
+          </div>
+          <div class="ped">
+            Use this area for sire, dam, generation, or bloodline notes.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="/public/group-babies.webp" alt="Stud Ram 02">
+        <div class="card-body">
+          <div class="status">Stud Ram</div>
+          <h2>Stud Ram 02</h2>
+          <div class="meta">
+            Replace with retained ram details, growth notes, or conformation highlights.
+          </div>
+          <div class="ped">
+            Add pedigree, breeding direction, or imported bloodline references here.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="/public/group-babies.webp" alt="Stud Ram 03">
+        <div class="card-body">
+          <div class="status">Young Prospect</div>
+          <h2>Stud Ram 03</h2>
+          <div class="meta">
+            Replace with young sire prospect information and future breeding value notes.
+          </div>
+          <div class="ped">
+            This section can hold sire/dam, generation, and registration details.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="/public/group-babies.webp" alt="Stud Ram 04">
+        <div class="card-body">
+          <div class="status">Reference Sire</div>
+          <h2>Stud Ram 04</h2>
+          <div class="meta">
+            Use this card for a reference ram, imported line, or a future herd sire addition.
+          </div>
+          <div class="ped">
+            Add any supporting notes that strengthen the breeding program story.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="contact-wrap">
+      <div class="contact-grid">
+        <div>
+          <div class="eyebrow" style="color:#a8a29e;">Contact</div>
+          <h2 class="contact-title">Enquiries welcome regarding current sires and future flock direction.</h2>
+          <div class="contact-text">
+            If you would like more information on our Valais rams, retained young stock, or breeding plans, please get in touch.
+          </div>
+        </div>
+        <div>
+          <div class="contact-box">17 Miners Rest Rd, Miners Rest VIC 3352</div>
+          <div class="contact-box">shane@malakai.com.au</div>
+          <div class="contact-box">0409 270 381</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>Malakai • 17 Miners Rest Rd, Miners Rest VIC 3352</div>
+      <div>Valais Blacknose Sheep • Mediterranean Miniature Donkeys</div>
+    </div>
+  </footer>
+
+</body>
+</html>
